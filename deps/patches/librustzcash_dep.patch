@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 7fd4f9cfc..59c751aea 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -23,7 +23,7 @@ resolver = "2"
+ 
+ [workspace.package]
+ edition = "2024"
+-rust-version = "1.85.1"
++rust-version = "1.85.0"
+ repository = "https://github.com/zcash/librustzcash"
+ license = "MIT OR Apache-2.0"
+ categories = ["cryptography::cryptocurrencies"]

@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 868d316..80ddf19 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -104,6 +104,8 @@ circuit = [
+   "std"
+ ]
+ 
++no_std = [ "lazy_static/spin_no_std" ]
++
+ ## Enables multithreading support for creating proofs.
+ multicore = ["bellman?/multicore"]
+ 

@@ -25,3 +25,4 @@ __pycache__/
 ledger/
 # Build directory
 build/
+target-rust-analyzer/

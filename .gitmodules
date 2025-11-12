@@ -1,0 +1,15 @@
+[submodule "deps/sapling-crypto"]
+	path = deps/sapling-crypto
+	url = https://github.com/zcash/sapling-crypto.git
+[submodule "deps/rust-secp256k1"]
+	path = deps/rust-secp256k1
+	url = https://github.com/rust-bitcoin/rust-secp256k1.git
+[submodule "deps/radium"]
+	path = deps/radium
+	url = https://github.com/ferrilab/radium.git
+[submodule "deps/orchard"]
+	path = deps/orchard
+	url = https://github.com/zcash/orchard.git
+[submodule "deps/librustzcash"]
+	path = deps/librustzcash
+	url = https://github.com/zcash/librustzcash.git
