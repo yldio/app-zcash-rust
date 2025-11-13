@@ -1,6 +1,6 @@
 [package]
-name = "app-boilerplate-rust"
-version = "1.7.6"
+name = "app-zcash-rust"
+version = "0.0.1"
 authors = ["Ledger"]
 edition = "2021"
 
@@ -12,11 +12,32 @@ serde-json-core = { git = "https://github.com/rust-embedded-community/serde-json
 hex = { version = "0.4.3", default-features = false, features = ["serde", "alloc"] }
 numtoa = "0.2.4"
 
+# librustzcash deps
+orchard = { path = "./deps/orchard", default-features = false }
+sapling = { package = "sapling-crypto", path = "./deps/sapling-crypto", default-features = false }
+secp256k1 = { path = "./deps/rust-secp256k1", default-features = false }
+
+# librustzcash packages
+zcash_primitives = { path = "./deps/librustzcash/zcash_primitives", default-features = false }
+zcash_transparent = { path = "./deps/librustzcash/zcash_transparent", default-features = false }
+zcash_address = { path = "./deps/librustzcash/components/zcash_address", default-features = false }
+
 [build-dependencies]
 image = "0.25.7"
 
+[patch.crates-io]
+# Used in orchard
+radium = { path = "./deps/radium" }
+# Used in bip32 in librustzcash
+secp256k1 = { path = "./deps/rust-secp256k1" }
+# Used in librustzcash
+orchard = { path = "./deps/orchard" }
+sapling-crypto = { path = "./deps/sapling-crypto" }
+# Used by multiple deps
+spin = { path = "./deps/spin" }
+
 [profile.release]
-opt-level = 'z'
+opt-level = 3
 lto = true
 
 [features]
