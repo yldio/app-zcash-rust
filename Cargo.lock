@@ -55,15 +55,15 @@ checksum = "b0674a1ddeecb70197781e945de4b3b8ffb61fa939a5597bcf48503737663100"
 
 [[package]]
 name = "app-zcash-rust"
-version = "1.7.6"
+version = "0.0.1"
 dependencies = [
  "hex",
  "image 0.25.7",
  "include_gif",
  "ledger_device_sdk",
  "numtoa",
- "orchard 0.11.0",
- "sapling-crypto 0.5.0",
+ "orchard",
+ "sapling-crypto",
  "secp256k1",
  "serde",
  "serde-json-core",
@@ -1253,40 +1253,6 @@ dependencies = [
  "serde",
  "sinsemilla",
  "subtle",
- "tracing",
- "visibility",
- "zcash_note_encryption",
- "zcash_spec",
- "zip32",
-]
-
-[[package]]
-name = "orchard"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1ef66fcf99348242a20d582d7434da381a867df8dc155b3a980eca767c56137"
-dependencies = [
- "aes",
- "bitvec",
- "blake2b_simd",
- "core2",
- "ff",
- "fpe",
- "getset",
- "group",
- "halo2_poseidon",
- "hex",
- "incrementalmerkletree",
- "lazy_static",
- "memuse",
- "nonempty",
- "pasta_curves",
- "rand",
- "reddsa",
- "serde",
- "sinsemilla",
- "subtle",
- "tracing",
  "visibility",
  "zcash_note_encryption",
  "zcash_spec",
@@ -1319,12 +1285,6 @@ name = "peeking_take_while"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
-
-[[package]]
-name = "pin-project-lite"
-version = "0.2.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3b3cff922bd51709b605d9ead9aa71031d81447142d828eb4a6eba76fe619f9b"
 
 [[package]]
 name = "pkg-config"
@@ -1368,6 +1328,12 @@ dependencies = [
  "opaque-debug",
  "universal-hash",
 ]
+
+[[package]]
+name = "portable-atomic"
+version = "1.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f84267b20a16ea918e43c6a88433c2d54fa145c92a811b5b047ccbe153674483"
 
 [[package]]
 name = "ppv-lite86"
@@ -1708,38 +1674,6 @@ dependencies = [
  "rand_core",
  "redjubjub",
  "subtle",
- "tracing",
- "zcash_note_encryption",
- "zcash_spec",
- "zip32",
-]
-
-[[package]]
-name = "sapling-crypto"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f9d3c081c83f1dc87403d9d71a06f52301c0aa9ea4c17da2a3435bbf493ffba4"
-dependencies = [
- "aes",
- "bitvec",
- "blake2b_simd",
- "blake2s_simd",
- "bls12_381",
- "core2",
- "ff",
- "fpe",
- "getset",
- "group",
- "hex",
- "incrementalmerkletree",
- "jubjub",
- "lazy_static",
- "memuse",
- "rand",
- "rand_core",
- "redjubjub",
- "subtle",
- "tracing",
  "zcash_note_encryption",
  "zcash_spec",
  "zip32",
@@ -1872,8 +1806,9 @@ checksum = "3c5e1a9a646d36c3599cd173a41282daf47c44583ad367b8e6837255952e5c67"
 [[package]]
 name = "spin"
 version = "0.9.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
+dependencies = [
+ "portable-atomic",
+]
 
 [[package]]
 name = "stable_deref_trait"
@@ -2053,22 +1988,6 @@ dependencies = [
  "toml_datetime",
  "winnow",
 ]
-
-[[package]]
-name = "tracing"
-version = "0.1.41"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "784e0ac535deb450455cbfa28a6f0df145ea1bb7ae51b821cf5e7927fdcfbdd0"
-dependencies = [
- "pin-project-lite",
- "tracing-core",
-]
-
-[[package]]
-name = "tracing-core"
-version = "0.1.34"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b9d12581f227e93f094d3af2ae690a574abb8a2b9b7a96e7cfe9647b2b617678"
 
 [[package]]
 name = "typenum"
@@ -2353,15 +2272,14 @@ dependencies = [
  "jubjub",
  "memuse",
  "nonempty",
- "orchard 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "orchard",
  "rand",
  "rand_core",
  "redjubjub",
  "ripemd 0.1.3",
- "sapling-crypto 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sapling-crypto",
  "sha2 0.10.9",
  "subtle",
- "tracing",
  "zcash_address",
  "zcash_encoding",
  "zcash_note_encryption",

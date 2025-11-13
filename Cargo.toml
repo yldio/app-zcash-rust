@@ -1,6 +1,6 @@
 [package]
 name = "app-zcash-rust"
-version = "1.7.6"
+version = "0.0.1"
 authors = ["Ledger"]
 edition = "2021"
 
@@ -14,7 +14,7 @@ numtoa = "0.2.4"
 
 # librustzcash deps
 orchard = { path = "./deps/orchard", default-features = false }
-sapling = { package = "sapling-crypto", path = "./deps/sapling-crypto", default-features = false, features = ["no_std"]}
+sapling = { package = "sapling-crypto", path = "./deps/sapling-crypto", default-features = false }
 secp256k1 = { path = "./deps/rust-secp256k1", default-features = false }
 
 # librustzcash packages
@@ -30,6 +30,11 @@ image = "0.25.7"
 radium = { path = "./deps/radium" }
 # Used in bip32 in librustzcash
 secp256k1 = { path = "./deps/rust-secp256k1" }
+# Used in librustzcash
+orchard = { path = "./deps/orchard" }
+sapling-crypto = { path = "./deps/sapling-crypto" }
+# Used by multiple deps
+spin = { path = "./deps/spin" }
 
 [profile.release]
 opt-level = 3

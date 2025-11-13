@@ -13,3 +13,6 @@
 [submodule "deps/librustzcash"]
 	path = deps/librustzcash
 	url = https://github.com/zcash/librustzcash.git
+[submodule "deps/spin"]
+	path = deps/spin
+	url = https://github.com/zesterer/spin-rs.git
