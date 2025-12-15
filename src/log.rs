@@ -31,6 +31,7 @@ macro_rules! _log {
     ($lvl:expr, $fmt:literal $($arg:tt)*) => (log!(target: __log_module_path!(), $lvl, $fmt $($arg)*))
 }
 
+#[cfg(feature = "log_debug")]
 pub(crate) use _log as log;
 
 #[cfg(feature = "log_debug")]

@@ -7,6 +7,22 @@ use crate::{
     AppSW,
 };
 
+// Buffer for bs58 encoding output
+struct OutBuf<'b, const N: usize> {
+    out: &'b mut [u8; N],
+}
+
+impl<const N: usize> EncodeTarget for OutBuf<'_, N> {
+    fn encode_with(
+        &mut self,
+        max_len: usize,
+        f: impl for<'a> FnOnce(&'a mut [u8]) -> bs58::encode::Result<usize>,
+    ) -> bs58::encode::Result<usize> {
+        let len = f(&mut self.out[..max_len])?;
+        Ok(len)
+    }
+}
+
 /// BIP32 path stored as an array of [`u32`].
 #[derive(Default)]
 pub struct Bip32Path(Vec<u32>);
@@ -137,21 +153,6 @@ pub fn public_key_to_address_base58<const MAX_OUT_SIZE: usize>(
 
     let checksum = compute_cheksum(&buf[0..22]);
     buf[22..26].copy_from_slice(&checksum);
-
-    struct OutBuf<'b, const N: usize> {
-        out: &'b mut [u8; N],
-    }
-
-    impl<const N: usize> EncodeTarget for OutBuf<'_, N> {
-        fn encode_with(
-            &mut self,
-            max_len: usize,
-            f: impl for<'a> FnOnce(&'a mut [u8]) -> bs58::encode::Result<usize>,
-        ) -> bs58::encode::Result<usize> {
-            let len = f(&mut self.out[..max_len])?;
-            Ok(len)
-        }
-    }
 
     let mut out_buf = [0u8; MAX_OUT_SIZE];
     let out_len = bs58::encode(&buf[..26])

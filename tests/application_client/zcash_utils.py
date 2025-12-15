@@ -1,4 +1,3 @@
-from hashlib import sha256
 import hashlib
 from io import BytesIO
 from typing import Optional, Literal
@@ -73,7 +72,7 @@ def t_address_from_pubkey(pub_key: bytes) -> str:
     compressed_pub_key = prefix + pub_key[1:33]
 
     # Perform SHA256 followed by RIPEMD160
-    sha256_hash = sha256(compressed_pub_key).digest()
+    sha256_hash = hashlib.sha256(compressed_pub_key).digest()
     ripemd160 = hashlib.new('ripemd160')
     ripemd160.update(sha256_hash)
     ripemd160_hash = ripemd160.digest()
@@ -82,7 +81,7 @@ def t_address_from_pubkey(pub_key: bytes) -> str:
     network_bytes = b'\x1C\xB8'  # for t-addresses
     addr_payload = network_bytes + ripemd160_hash
     # Calculate the checksum
-    checksum = sha256(sha256(addr_payload).digest()).digest()[:4]
+    checksum = hashlib.sha256(hashlib.sha256(addr_payload).digest()).digest()[:4]
     # Construct the final address bytes
     addr = addr_payload + checksum
     # Encode in Base58

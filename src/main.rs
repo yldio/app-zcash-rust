@@ -43,7 +43,7 @@ use handlers::{
     sign_tx::{handler_sign_tx, TxContext},
 };
 use ledger_device_sdk::{
-    io::{ApduHeader, Comm, Reply, StatusWords},
+    io::{ApduHeader, Comm, Reply},
     nbgl::init_comm,
 };
 
@@ -273,7 +273,5 @@ fn handle_apdu(comm: &mut Comm, ins: &Instruction, ctx: &mut TxContext) -> Resul
 #[inline]
 pub fn panic_handler(_info: &PanicInfo) -> ! {
     error!("Panicking: {:?}\n", _info);
-    let mut comm = Comm::new();
-    comm.reply(StatusWords::Panic);
-    ledger_device_sdk::exit_app(1)
+    ledger_device_sdk::exiting_panic(_info)
 }
